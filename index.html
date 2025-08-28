@@ -14,4 +14,379 @@
       --bg: #0b1324;
       --bg-soft: #101a33;
       --text: #eaf0ff;
-      --mut
+      --muted: #a7b0c4;
+      --accent: #6aa2ff;
+      --accent-2: #7cf7d4;
+      --card: #0f1730;
+      --border: #1c2950;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+    .light{
+      --bg: #f6f7fb;
+      --bg-soft: #ffffff;
+      --text: #0b1324;
+      --muted: #5a6786;
+      --accent: #2a66ff;
+      --accent-2: #00b894;
+      --card: #ffffff;
+      --border: #e6e9f2;
+      --shadow: 0 10px 30px rgba(2,16,74,.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 100% -10%, rgba(106,162,255,.15), transparent 60%),
+                  radial-gradient(900px 600px at -10% 0%, rgba(124,247,212,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    /* Utilities */
+    .container{max-width:var(--maxw); margin-inline:auto; padding: 24px 20px}
+    .grid{display:grid; gap:16px}
+    .btn{display:inline-flex; gap:10px; align-items:center; border:1px solid var(--border); background:linear-gradient(180deg, var(--bg-soft), var(--card)); color:var(--text); padding:12px 16px; border-radius:12px; text-decoration:none; box-shadow: var(--shadow);}
+    .btn:hover{border-color:color-mix(in oklab, var(--accent) 50%, var(--border))}
+    .btn.primary{background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, transparent), var(--accent)); color:#fff; border-color: transparent}
+    .chip{display:inline-block; padding:8px 12px; border:1px solid var(--border); border-radius:999px; background:var(--bg-soft); color:var(--muted); font-size:14px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);}
+    .muted{color:var(--muted)}
+
+    /* Skip link */
+    .skip{position:absolute; left:-9999px; top:auto}
+    .skip:focus{left:12px; top:12px; background:var(--accent); color:#fff; padding:10px 12px; border-radius:8px; z-index:999}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 70%, transparent)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand .logo{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:white; box-shadow: var(--shadow)}
+    .nav a{color:var(--muted); text-decoration:none; font-weight:600}
+    .nav a.active, .nav a:hover{color:var(--text)}
+    .menu{display:flex; gap:18px; align-items:center}
+    .hamburger{display:none; border:1px solid var(--border); background:var(--bg-soft); padding:8px 10px; border-radius:10px}
+
+    /* Mobile menu */
+    .mobile{display:none; border-top:1px solid var(--border); padding:12px 20px}
+    .mobile a{display:block; padding:10px 0}
+
+    /* Hero */
+    .hero{padding: 72px 0}
+    .hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center}
+    .kicker{font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent)}
+    h1{font-size: clamp(32px, 6vw, 56px); line-height:1.1; margin:12px 0 12px}
+    .lead{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted)}
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .avatar{aspect-ratio:1/1; border-radius:24px; border:1px solid var(--border); background:
+      radial-gradient(circle at 70% 30%, rgba(255,255,255,.15), transparent 40%),
+      linear-gradient(160deg, var(--bg-soft), var(--card)); display:grid; place-items:center}
+    .avatar svg{width:60%; opacity:.9}
+
+    /* Sections */
+    section{padding: 26px 0}
+    section h2{font-size: clamp(24px, 3.5vw, 36px); margin:0 0 12px}
+    .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+
+    /* About */
+    .about{display:grid; grid-template-columns: 1fr 1fr; gap:18px}
+    .about .card{padding:18px}
+
+    /* Skills */
+    .skills{display:flex; flex-wrap:wrap; gap:10px}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .project{overflow:hidden}
+    .project .thumb{height:180px; background:linear-gradient(135deg, color-mix(in oklab, var(--accent) 8%, var(--bg)), color-mix(in oklab, var(--accent-2) 10%, var(--bg))); border-bottom:1px solid var(--border);}
+    .project .content{padding:16px}
+    .project .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+
+    /* Experience */
+    .timeline{position:relative; padding-left:24px;}
+    .timeline::before{content:""; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:var(--border)}
+    .tl-item{position:relative; padding:10px 0 10px 16px}
+    .tl-item::before{content:""; position:absolute; left:-1px; top:16px; width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); border:2px solid var(--bg)}
+
+    /* Contact */
+    form{display:grid; gap:10px}
+    input, textarea{background:var(--bg-soft); color:var(--text); border:1px solid var(--border); border-radius:12px; padding:12px 14px; font: inherit}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:28px 0; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns: 1fr;}
+      .about{grid-template-columns: 1fr}
+      .projects{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .menu{display:none}
+      .hamburger{display:inline-flex}
+      .projects{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <nav class="nav container" aria-label="Primary">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">✦</div>
+        <a href="#" aria-label="Homepage">Your Name</a>
+      </div>
+
+      <div class="menu" role="menubar">
+        <a href="#about" role="menuitem">About</a>
+        <a href="#projects" role="menuitem">Projects</a>
+        <a href="#experience" role="menuitem">Experience</a>
+        <a href="#contact" role="menuitem">Contact</a>
+        <button class="btn" id="themeToggle" aria-label="Toggle theme">🌓</button>
+      </div>
+
+      <button class="hamburger" id="menuBtn" aria-label="Open navigation">☰</button>
+    </nav>
+    <div class="mobile container" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">Hello, I'm</div>
+          <h1>Your Name</h1>
+          <p class="lead">A <strong>Front‑End Developer</strong> crafting delightful, accessible web experiences. I love building fast, elegant interfaces with clean code.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="mailto:you@example.com">📮 Email Me</a>
+            <a class="btn" href="#" download>⬇️ Download Résumé</a>
+          </div>
+        </div>
+        <div class="avatar card">
+          <!-- Placeholder avatar (replace with an <img src> if you like) -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="currentColor" stop-opacity=".15"/>
+                <stop offset="100%" stop-color="currentColor" stop-opacity=".05"/>
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="95" fill="url(#g)" stroke="rgba(255,255,255,.08)" />
+            <text x="50%" y="54%" text-anchor="middle" font-size="70" fill="currentColor" opacity=".9" font-weight="700">YN</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="chip">Open to work</span>
+      </div>
+      <div class="about">
+        <article class="card">
+          <p>I'm a developer with a focus on building accessible, performant web apps. I enjoy working with HTML, CSS, JavaScript, and modern frameworks. Outside work, you'll find me exploring UI animation and tinkering with design systems.</p>
+          <p class="muted">Based in Your City • Available for freelance and full‑time roles</p>
+        </article>
+        <aside class="card">
+          <h3 class="muted" style="margin-top:0">Quick facts</h3>
+          <ul>
+            <li>💼 3+ years experience</li>
+            <li>🛠️ JavaScript, TypeScript, React, Node</li>
+            <li>🧪 Testing: Jest, Playwright</li>
+            <li>⚡ Performance & a11y enthusiast</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills</h2>
+      </div>
+      <div class="skills">
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">React</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Express</span>
+        <span class="chip">Tailwind</span>
+        <span class="chip">Git</span>
+        <span class="chip">Accessibility</span>
+        <span class="chip">Performance</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <a class="btn" href="#">Browse All</a>
+      </div>
+      <div class="projects">
+        <!-- Project Card -->
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="content">
+            <h3>Project One</h3>
+            <p class="muted">A beautiful landing page with delightful interactions and perfect Lighthouse scores.</p>
+            <div class="meta">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">JS</span>
+              <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project Card -->
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="content">
+            <h3>Project Two</h3>
+            <p class="muted">An accessible design‑system playground with theming and tokens.</p>
+            <div class="meta">
+              <span class="chip">Design System</span>
+              <span class="chip">Theming</span>
+              <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project Card -->
+        <article class="project card">
+          <div class="thumb"></div>
+          <div class="content">
+            <h3>Project Three</h3>
+            <p class="muted">A progressive web app with offline support and instant loads.</p>
+            <div class="meta">
+              <span class="chip">PWA</span>
+              <span class="chip">React</span>
+              <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>Front‑End Developer — Company A</h3>
+          <p class="muted">Jan 2023 – Present • Remote</p>
+          <ul>
+            <li>Led redesign of marketing site, +30% conversion lift.</li>
+            <li>Built component library; reduced UI defects by 40%.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <h3>Web Developer — Company B</h3>
+          <p class="muted">Aug 2021 – Dec 2022 • City</p>
+          <ul>
+            <li>Optimized bundle size by 45% and improved LCP to ~1.2s.</li>
+            <li>Mentored interns on modern CSS and accessibility.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+      </div>
+      <div class="grid" style="grid-template-columns: 1fr .9fr">
+        <div class="card" style="padding:16px">
+          <form onsubmit="event.preventDefault(); window.location='mailto:you@example.com?subject=' + encodeURIComponent(document.getElementById('subj').value) + '&body=' + encodeURIComponent(document.getElementById('msg').value);">
+            <label>
+              Subject
+              <input id="subj" placeholder="Let's work together" required />
+            </label>
+            <label>
+              Message
+              <textarea id="msg" placeholder="Hi! I have a project in mind..." required></textarea>
+            </label>
+            <button class="btn primary" type="submit">Send Email</button>
+          </form>
+        </div>
+        <aside class="card" style="padding:16px">
+          <h3 style="margin-top:0">Elsewhere</h3>
+          <p class="muted">Find me on these platforms:</p>
+          <p>
+            <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="#" target="_blank" rel="noopener">Twitter/X</a>
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="grid" style="grid-template-columns: 1fr auto; align-items:center">
+      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+      <a class="btn" href="#top" aria-label="Back to top">↑ Top</a>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle with localStorage
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light') document.body.classList.add('light');
+    themeToggle?.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobile = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      const show = mobile.style.display === 'block';
+      mobile.style.display = show ? 'none' : 'block';
+      menuBtn.setAttribute('aria-expanded', (!show).toString());
+    });
+
+    // Active link highlight on scroll
+    const links = [...document.querySelectorAll('header a[href^="#"]')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = '#' + entry.target.id;
+        const link = links.find(a => a.getAttribute('href') === id);
+        if(link){
+          link.classList.toggle('active', entry.isIntersecting);
+        }
+      });
+    }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
+    sections.forEach(sec => io.observe(sec));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
